@@ -6,7 +6,14 @@ Restore mojang login related files.
 ***
 
 ## run
+
 ### Windows
+Install  
+> [Git for Windows](https://gitforwindows.org/)  
+> [JDK-17](https://www.oracle.com/java/technologies/downloads/#java17)  
+> [Python 3](https://www.python.org/downloads/windows/)  
+
+then run
 ```
 git clone https://github.com/bddjr/Geyser-roolback-for-mojang-login-builder
 cd Geyser-roolback-for-mojang-login-builder
