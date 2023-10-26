@@ -9,6 +9,7 @@ if %errorlevel% neq 0 goto PAUSE
 
 cd build
 run-build.bat
+exit
 
 :PAUSE
 pause
