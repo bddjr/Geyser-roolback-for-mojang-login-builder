@@ -23,4 +23,5 @@ cd ..
 python run-copy.py
 if %errorlevel% neq 0 exit
 
-explorer ..\dist\
+cd ..
+explorer dist\
