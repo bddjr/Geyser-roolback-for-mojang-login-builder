@@ -1,3 +1,6 @@
+if exist Geyser-roolback-for-mojang-login\ rmdir /S /Q Geyser-roolback-for-mojang-login\
+if exist Geyser-roolback-for-mojang-login\ exit
+
 git clone https://github.com/GeyserMC/Geyser Geyser-roolback-for-mojang-login
 if %errorlevel% neq 0 exit
 
