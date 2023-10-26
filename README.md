@@ -17,5 +17,5 @@ then run
 ```
 git clone https://github.com/bddjr/Geyser-roolback-for-mojang-login-builder
 cd Geyser-roolback-for-mojang-login-builder
-.\Geyser-roolback-for-mojang-login-builder.bat
+.\builder.bat
 ```
