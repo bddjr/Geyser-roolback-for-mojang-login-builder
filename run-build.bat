@@ -14,7 +14,8 @@ if %errorlevel% neq 0 goto PAUSE
 git submodule update --init --recursive
 if %errorlevel% neq 0 goto PAUSE
 
-git remote set-url origin https://github.com/bddjr/Geyser-roolback-for-mojang-login
+git remote set-url origin --push https://github.com/bddjr/Geyser-roolback-for-mojang-login
+git remote set-url origin --push --add https://gitee.com/bddjr/Geyser-roolback-for-mojang-login
 
 cmd /c gradlew build
 if %errorlevel% neq 0 goto PAUSE
