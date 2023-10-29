@@ -1,5 +1,6 @@
 import os, subprocess, re
 
+os.chdir(os.path.dirname(__file__))
 os.chdir('test-Standalone')
 
 try:
@@ -17,3 +18,4 @@ except:
     geyser_version = None
 
 print(geyser_version)
+os.chdir('..')

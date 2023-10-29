@@ -75,6 +75,7 @@ try:
     cmd('git remote set-url origin --push --add https://gitee.com/bddjr/Geyser-roolback-for-mojang-login', False)
 
     cmd('gradlew build')
+    cmd('gradlew -stop')
 
 
 
@@ -112,7 +113,7 @@ pause
 
     print('\n# Export dist/release.md')
 
-    with open("../dist/release.md", 'w') as f:
+    with open("dist/release.md", 'w') as f:
         f.write(
 '''```
 {}
