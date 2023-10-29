@@ -9,7 +9,7 @@ Restore mojang login related files.
 ### Windows
 1.  Install  
 > [Git for Windows](https://gitforwindows.org/)  
-> [JDK-17](https://www.oracle.com/java/technologies/downloads/#java17)  
+> [JDK-17](https://www.oracle.com/java/technologies/downloads/#jdk17-windows)  
 > [Python 3](https://www.python.org/downloads/windows/)  
 
 2.  JAVA_HOME (default path)
@@ -29,5 +29,29 @@ cd Geyser-roolback-for-mojang-login-builder
 
 5.  build
 ```
-.\builder.bat
+python builder.py
+```
+
+### Linux
+1.  Install
+> [Git](https://git-scm.com/)  
+> [JDK-17](https://www.oracle.com/java/technologies/downloads/#jdk17-linux)  
+> [Python 3](https://www.python.org/)  
+
+2.  JAVA_HOME
+> (to be continued...)  
+
+3.  git clone
+```
+git clone https://github.com/bddjr/Geyser-roolback-for-mojang-login-builder
+```
+
+4.  Change Directory
+```
+cd Geyser-roolback-for-mojang-login-builder
+```
+
+5.  build
+```
+python3 builder.py
 ```
