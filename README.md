@@ -3,6 +3,7 @@ Restore mojang login related files.
 
 > git revert [7983448ce637656db1fca95eb65344a8c6d90de3](https://github.com/GeyserMC/Geyser/commit/7983448ce637656db1fca95eb65344a8c6d90de3)  
 
+Github repository: [Geyser-roolback-for-mojang-login-builder](https://github.com/bddjr/Geyser-roolback-for-mojang-login-builder)
 ***
 ## Get started
 
@@ -35,6 +36,7 @@ cd Geyser-roolback-for-mojang-login-builder
 ```
 python builder.py
 ```
+or double-click `builder.bat`  
 
 ### Linux
 1.  Install
