@@ -34,7 +34,7 @@ cd Geyser-roolback-for-mojang-login-builder
 
 5.  build
 ```
-python builder.py
+py builder.py
 ```
 or double-click `builder.bat`  
 
