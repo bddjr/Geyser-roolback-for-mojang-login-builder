@@ -10,20 +10,14 @@ JAVA_HOME = os.getenv('JAVA_HOME')
 if JAVA_HOME == None:
     JAVA_PATH = 'java'
 else:
-    JAVA_PATH = os.path.join(JAVA_HOME,'bin/java')
+    JAVA_PATH = os.path.join(JAVA_HOME,'bin','java')
 
-java_command = [
-    JAVA_PATH,
-    '-Duser.language=en','-Duser.region=US',
-    '-Xmx256M',
-    '-jar','Geyser-roolback-for-mojang-login-Standalone.jar',
-    'nogui'
-]
+java_command = f'"{JAVA_PATH}" -Duser.language=en -Duser.region=US -Xmx256M -jar Geyser-roolback-for-mojang-login-Standalone.jar nogui'
 
 try:
-    print('$>', *java_command)
+    print('$>', java_command)
     run = subprocess.run(
-        java_command,
+        java_command ,
         #encoding = 'ascii',
         input = b'geyser version\ngeyser stop',
         capture_output = True

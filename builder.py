@@ -1,3 +1,6 @@
+if __name__ != "__main__":
+    raise 'Running as a module is not supported.'
+
 print('Geyser-roolback-for-mojang-login-builder')
 
 started_gradlew = False
@@ -44,7 +47,7 @@ def print_timer():
 
 def cmd(command, if_error_exit=True):
     if WIN32:
-        command += ' <nul'
+        command += ' <nul' # ^C Y
     print('$>', command)
     e = os.system(command)
     if e != 0 and if_error_exit:
@@ -55,6 +58,7 @@ def cmd(command, if_error_exit=True):
 try:
     os.chdir(os.path.dirname(__file__))
 
+    # version
     e = os.system('git log -n 1 --pretty=format:git-%h')
     if e == 9009 :
         print('\nGit not found\n')
@@ -62,11 +66,19 @@ try:
     del e
 
 
+    # command args
     ignore_clone_geyser = False
+    gradlew_args = ''
 
     for i in sys.argv:
-        if i == 'ignore-clone-geyser':
+        if i == 'ignore-clone':
             ignore_clone_geyser = True
+        elif i == 'gradlew-proxy':
+            gradlew_args = '-DsocksProxyHost=127.0.0.1 -DsocksProxyPort=7890'
+        elif i.startswith('-DsocksProxy'):
+            gradlew_args += i + ' '
+
+
 
     if not ignore_clone_geyser:
         print('\n# Clone Geyser')
@@ -90,7 +102,7 @@ try:
     cmd('git remote set-url origin --push --add https://gitee.com/bddjr/Geyser-roolback-for-mojang-login', False)
 
     started_gradlew = True
-    cmd('gradlew build')
+    cmd(f'gradlew {gradlew_args} build')
     cmd('gradlew -stop')
     started_gradlew = False
 

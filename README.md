@@ -66,3 +66,12 @@ cd Geyser-roolback-for-mojang-login-builder
 ```sh
 python3 builder.py
 ```
+
+***
+## arguments
+```
+ignore-clone
+gradlew-proxy
+-DsocksProxyHost=127.0.0.1
+-DsocksProxyPort=7890
+```

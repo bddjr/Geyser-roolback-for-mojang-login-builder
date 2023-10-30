@@ -24,7 +24,7 @@ JAVA_HOME = os.getenv('JAVA_HOME')
 if JAVA_HOME == None:
     JAVA_PATH = 'java'
 else:
-    JAVA_PATH = os.path.join(JAVA_HOME,'bin/java')
+    JAVA_PATH = os.path.join(JAVA_HOME,'bin','java')
 
 
 WIN32 = sys.platform == "win32"
