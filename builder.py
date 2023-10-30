@@ -6,7 +6,16 @@ try:
 
     os.chdir(os.path.dirname(__file__))
 
-    os.system('git log -n 1 --pretty=format:git-%h')
+    e = os.system('git log -n 1 --pretty=format:git-%h')
+    if e == 9009 :
+        print('\nGit not found\n')
+        exit(e)
+    del e
+
+    JAVA_HOME = os.getenv('JAVA_HOME')
+    if JAVA_HOME == None:
+        print('\nJAVA_HOME not found\n')
+        exit(1)
 
     WIN32 = sys.platform == "win32"
 
@@ -99,9 +108,9 @@ try:
             if not os.path.exists("test-Standalone/start.bat"):
                 with open("test-Standalone/start.bat", 'x') as f:
                     f.write(
-'''java -Xmx256M -jar Geyser-roolback-for-mojang-login-Standalone.jar nogui
+'''"{}" -Xmx256M -jar Geyser-roolback-for-mojang-login-Standalone.jar nogui
 pause
-'''
+'''.format( os.path.join(JAVA_HOME,'bin/java') )
                     )
 
 

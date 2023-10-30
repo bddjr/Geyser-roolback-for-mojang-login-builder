@@ -4,7 +4,7 @@ Restore mojang login related files.
 > git revert [7983448ce637656db1fca95eb65344a8c6d90de3](https://github.com/GeyserMC/Geyser/commit/7983448ce637656db1fca95eb65344a8c6d90de3)  
 
 ***
-## run
+## Get started
 
 ### Windows
 1.  Install  
@@ -12,10 +12,14 @@ Restore mojang login related files.
 > [JDK-17](https://www.oracle.com/java/technologies/downloads/#jdk17-windows)  
 > [Python 3](https://www.python.org/downloads/windows/)  
 
-2.  JAVA_HOME (default path)
-```
+2.  JAVA_HOME (default path)  
+
+cmd
+```cmd
 setx /M JAVA_HOME "C:\Program Files\Java\jdk-17"
+echo %JAVA_HOME%
 ```
+> C:\Program Files\Java\jdk-17
 
 3.  git clone
 ```
@@ -38,20 +42,25 @@ python builder.py
 > [JDK-17](https://www.oracle.com/java/technologies/downloads/#jdk17-linux)  
 > [Python 3](https://www.python.org/)  
 
-2.  JAVA_HOME
-> (to be continued...)  
+2.  JAVA_HOME (default path)
+```sh
+sudo echo "export JAVA_HOME=/usr/lib/jvm/jdk-17-oracle-x64" >> /etc/profile
+source /etc/profile
+echo $JAVA_HOME
+```
+> /usr/lib/jvm/jdk-17-oracle-x64
 
 3.  git clone
-```
+```sh
 git clone https://github.com/bddjr/Geyser-roolback-for-mojang-login-builder
 ```
 
 4.  Change Directory
-```
+```sh
 cd Geyser-roolback-for-mojang-login-builder
 ```
 
 5.  build
-```
+```sh
 python3 builder.py
 ```
