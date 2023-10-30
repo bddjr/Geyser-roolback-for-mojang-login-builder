@@ -14,7 +14,7 @@ Restore mojang login related files.
 
 2.  JAVA_HOME (default path)  
 
-cmd
+cmd (Run as administrator)
 ```cmd
 setx /M JAVA_HOME "C:\Program Files\Java\jdk-17"
 echo %JAVA_HOME%
