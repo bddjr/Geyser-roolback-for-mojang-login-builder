@@ -2,7 +2,19 @@ print('Geyser-roolback-for-mojang-login-builder')
 
 started_gradlew = False
 
-import os, sys, shutil, stat, glob, time
+import os, sys, time
+from mytools.file_tools import *
+
+JAVA_HOME = os.getenv('JAVA_HOME')
+if JAVA_HOME == None:
+    print('\nJAVA_HOME not found\n')
+    exit(1)
+
+WIN32 = sys.platform == "win32"
+if WIN32:
+    os.system('title Geyser-roolback-for-mojang-login-builder')
+
+
 
 start_time = time.time()
 
@@ -29,30 +41,6 @@ def print_timer():
     print(' '.join(out) ,end='\n\n')
 
 
-def exists_remove(path):
-    if os.path.exists(path):
-        def readonly_handler(func, path, execinfo):
-            os.chmod(path, stat.S_IWRITE)
-            func(path)
-        if os.path.isdir(path):
-            shutil.rmtree(path, onerror=readonly_handler)
-        else:
-            try:
-                os.remove(path)
-            except PermissionError:
-                readonly_handler(os.remove, path)
-        return True
-    return False
-
-def make_clear_dir(path):
-    exists_remove(path)
-    os.mkdir(path)
-
-def not_exists_mkdir(path):
-    if not os.path.exists(path):
-        os.mkdir(path)
-        return True
-    return False
 
 def cmd(command, if_error_exit=True):
     if WIN32:
@@ -72,17 +60,6 @@ try:
         print('\nGit not found\n')
         exit(e)
     del e
-
-    JAVA_HOME = os.getenv('JAVA_HOME')
-    if JAVA_HOME == None:
-        print('\nJAVA_HOME not found\n')
-        exit(1)
-
-    WIN32 = sys.platform == "win32"
-
-    if WIN32:
-        os.system('title Geyser-roolback-for-mojang-login-builder')
-
 
 
     ignore_clone_geyser = False
@@ -117,59 +94,9 @@ try:
     cmd('gradlew -stop')
     started_gradlew = False
 
-
-
-    print('\n# Copy jar to dist/jar/')
-
     os.chdir('../../')
 
-    make_clear_dir("dist/")
-    os.mkdir("dist/jar")
-    exists_remove("test-Standalone/Geyser-roolback-for-mojang-login-Standalone.jar")
-
-
-    for i in glob.glob("build/Geyser-roolback-for-mojang-login/bootstrap/*/build/libs/Geyser-*"):
-        name_ends = i[i.rfind('-') : ]
-        out_name = "dist/jar/Geyser-roolback-for-mojang-login" + name_ends
-        print(out_name)
-        shutil.copy(i, out_name)
-        if name_ends == "-Standalone.jar":
-            not_exists_mkdir("test-Standalone/")
-            shutil.copy(i, "test-Standalone/Geyser-roolback-for-mojang-login-Standalone.jar")
-            if not os.path.exists("test-Standalone/start.bat"):
-                with open("test-Standalone/start.bat", 'x') as f:
-                    f.write(
-'''"{}" -Xmx256M -jar Geyser-roolback-for-mojang-login-Standalone.jar nogui
-pause
-'''.format( os.path.join(JAVA_HOME,'bin/java') )
-                    )
-
-
-
-    print('\n# Get Geyser version')
-
-    from geyser_version import geyser_version
-
-
-    print('\n# Export dist/release.md')
-
-    with open("dist/release.md", 'w') as f:
-        f_cache = (
-'''Please use [JDK-17](https://www.oracle.com/java/technologies/downloads/#java17) to run it.
-
-Use [Geyser-roolback-for-mojang-login-builder](https://github.com/bddjr/Geyser-roolback-for-mojang-login-builder) to build.
-'''
-        )
-        if geyser_version != None:
-            f_cache = (
-f'''```
-{geyser_version}
-```
-
-{f_cache}'''
-        )
-        f.write(f_cache)
-
+    from mytools.dist import OK
 
 
     print("\n# Completed.\nExported to dist folder.")

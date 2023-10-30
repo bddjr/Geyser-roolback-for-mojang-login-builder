@@ -1,8 +1,10 @@
+print('\n# Get Geyser version')
+
 import os, subprocess, re
 
 CWD = os.getcwd()
 os.chdir(os.path.dirname(__file__))
-os.chdir('test-Standalone')
+os.chdir('../test-Standalone')
 
 JAVA_HOME = os.getenv('JAVA_HOME')
 if JAVA_HOME == None:
@@ -10,7 +12,13 @@ if JAVA_HOME == None:
 else:
     JAVA_PATH = os.path.join(JAVA_HOME,'bin/java')
 
-java_command = ['java' if JAVA_HOME==None else os.path.join(JAVA_HOME,'bin/java') ,'-Duser.language=en','-Duser.region=US','-Xmx256M','-jar','Geyser-roolback-for-mojang-login-Standalone.jar','nogui']
+java_command = [
+    JAVA_PATH,
+    '-Duser.language=en','-Duser.region=US',
+    '-Xmx256M',
+    '-jar','Geyser-roolback-for-mojang-login-Standalone.jar',
+    'nogui'
+]
 
 try:
     print('$>', *java_command)
