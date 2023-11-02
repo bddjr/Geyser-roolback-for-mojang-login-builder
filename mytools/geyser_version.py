@@ -2,6 +2,7 @@ print('\n# Get Geyser version')
 
 import os, subprocess, re
 
+__name_for_import__ = ''
 if __name__ == "__main__":
     from file_tools import *
 else:
@@ -15,7 +16,7 @@ else:
     exec(f"from {__name_for_import__}file_tools import *")
 
 CWD = os.getcwd()
-cd(os.path.abspath(os.path.dirname(__file__)))
+cd_absdir(__file__)
 cd('../test-Standalone')
 
 JAVA_HOME = os.getenv('JAVA_HOME')

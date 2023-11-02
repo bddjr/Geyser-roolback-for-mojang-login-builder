@@ -16,7 +16,7 @@ if JAVA_HOME == None:
 
 WIN32 = sys.platform == "win32"
 if WIN32:
-    os.system('title Geyser-roolback-for-mojang-login-builder', False)
+    os.system('title Geyser-roolback-for-mojang-login-builder')
     gradlew_name = 'gradlew'
 else:
     gradlew_name = './gradlew'
@@ -45,8 +45,7 @@ def print_timer():
 
     out.append(f'{round( t % 60 ,3 )}s')
 
-    print(' '.join(out) ,end='\n\n')
-
+    print(f"\n{' '.join(out)}\n")
 
 
 def cmd(command, if_error_exit=True):
@@ -55,12 +54,13 @@ def cmd(command, if_error_exit=True):
     print('$>', command)
     e = os.system(command)
     if e != 0 and if_error_exit:
+        print_timer()
         exit(e)
     return e
 
 
 try:
-    cd(os.path.abspath(os.path.dirname(__file__)))
+    cd_absdir(__file__)
 
     # version
     e = cmd('git log -n 1 --pretty=format:git-%h', False)
@@ -140,21 +140,17 @@ try:
     print_timer()
 
 except KeyboardInterrupt:
-  while True:
-    try:
-        print('''
+    print('''
 ^C (builder.py)
-Stoping builder, please wait a moment!'''
-        )
-        cd(os.path.abspath(os.path.dirname(__file__)))
-        cd("build/Geyser-roolback-for-mojang-login")
-        cmd('git config --unset user.email', False)
-        cmd('git config --unset user.name', False)
-        cmd('git config --unset http.proxy', False)
-        cmd('git config --unset https.proxy', False)
-        cmd(f'{gradlew_name} -stop', False)
+Stoping builder'''
+    )
+    cd_absdir(__file__)
+    cd("build/Geyser-roolback-for-mojang-login")
+    cmd('git config --unset user.email', False)
+    cmd('git config --unset user.name', False)
+    cmd('git config --unset http.proxy', False)
+    cmd('git config --unset https.proxy', False)
+    cmd(f'{gradlew_name} -stop', False)
 
-        print_timer()
-        exit(-1073741510)
-    except KeyboardInterrupt:
-        pass
+    print_timer()
+    exit(-1073741510)

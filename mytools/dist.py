@@ -32,7 +32,7 @@ WIN32 = sys.platform == "win32"
 
 
 CWD = os.getcwd()
-cd(os.path.abspath(os.path.dirname(__file__)))
+cd_absdir(__file__)
 cd('..')
 
 
@@ -81,6 +81,7 @@ f'''```
 
 {f_cache}'''
     )
+    print(f'\n{f_cache}\n')
     f.write(f_cache)
 
 

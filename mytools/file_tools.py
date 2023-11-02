@@ -31,3 +31,6 @@ def not_exists_mkdir(path):
 def cd(p):
     print('$cd', p)
     os.chdir(p)
+
+def cd_absdir(p):
+    cd(os.path.abspath(os.path.dirname(p)))
