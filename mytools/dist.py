@@ -32,8 +32,8 @@ WIN32 = sys.platform == "win32"
 
 
 CWD = os.getcwd()
-os.chdir(os.path.dirname(__file__))
-os.chdir('..')
+cd(os.path.abspath(os.path.dirname(__file__)))
+cd('..')
 
 
 make_clear_dir("dist/")
@@ -84,4 +84,4 @@ f'''```
     f.write(f_cache)
 
 
-os.chdir(CWD)
+cd(CWD)

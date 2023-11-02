@@ -44,25 +44,30 @@ or double-click `builder.bat`
 > [JDK-17](https://www.oracle.com/java/technologies/downloads/#jdk17-linux)  
 > [Python 3](https://www.python.org/)  
 
-2.  JAVA_HOME (default path)
+2.  root
 ```sh
-sudo echo "export JAVA_HOME=/usr/lib/jvm/jdk-17-oracle-x64" >> /etc/profile
+su
+```
+
+3.  JAVA_HOME (default path)
+```sh
+echo "export JAVA_HOME=/usr/lib/jvm/jdk-17-oracle-x64" >> /etc/profile
 source /etc/profile
 echo $JAVA_HOME
 ```
 > /usr/lib/jvm/jdk-17-oracle-x64
 
-3.  git clone
+4.  git clone
 ```sh
 git clone https://github.com/bddjr/Geyser-roolback-for-mojang-login-builder
 ```
 
-4.  Change Directory
+5.  Change Directory
 ```sh
 cd Geyser-roolback-for-mojang-login-builder
 ```
 
-5.  build
+6.  build
 ```sh
 python3 builder.py
 ```
@@ -71,7 +76,5 @@ python3 builder.py
 ## arguments
 ```
 ignore-clone
-gradlew-proxy
--DsocksProxyHost=127.0.0.1
--DsocksProxyPort=7890
+clash-proxy
 ```
