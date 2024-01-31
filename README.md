@@ -1,3 +1,6 @@
+# ⚠该工具现因出现冲突，已不可用，请转到另一个开发者的项目：
+https://github.com/Shanwer/Geyser
+***
 # Geyser-roolback-for-mojang-login-builder
 Restore mojang login related files.  
 
